@@ -13,7 +13,7 @@ jobs:
       chart_name: sample-java-api
       version: ${{ github.ref_name }}
       registry: ghcr.io
-      repository: pauloo27
+      repository: pauloo27/helm-charts
     permissions:
       contents: read
       packages: write
