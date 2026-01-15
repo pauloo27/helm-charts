@@ -1,0 +1,19 @@
+name: Publish Helm Chart
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    uses: pauloo27/deployment-workflows/.github/workflows/helm-push.yml@main
+    with:
+      chart_path: charts/sample-java-api
+      chart_name: sample-java-api
+      version: ${{ github.ref_name }}
+      registry: ghcr.io
+      repository: pauloo27
+    permissions:
+      contents: read
+      packages: write
