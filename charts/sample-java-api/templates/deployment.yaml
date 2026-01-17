@@ -39,22 +39,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: {{ .Values.http_port }}
+              containerPort: {{ .Values.httpPort }}
               protocol: TCP
           env:
             - name: SERVER_PORT
-              value: "{{ .Values.http_port }}"
+              value: "{{ .Values.httpPort }}"
           {{- with .Values.livenessProbe }}
           livenessProbe:
             httpGet:
               path: {{ .httpGet.path }}
-              port: {{ $.Values.http_port }}
+              port: {{ $.Values.httpPort }}
           {{- end }}
           {{- with .Values.readinessProbe }}
           readinessProbe:
             httpGet:
               path: {{ .httpGet.path }}
-              port: {{ $.Values.http_port }}
+              port: {{ $.Values.httpPort }}
           {{- end }}
           {{- with .Values.resources }}
           resources:
